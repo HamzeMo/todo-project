@@ -1,91 +1,38 @@
-let Name = prompt('please enter your name');
-if(Name){
-    
-    alert('Hello '+ Name)
-    console.log(Name);
+let Name = prompt("please enter your name");
+let gender = prompt("(male or female)");
+let age = prompt("Enter Your age please");
+
+if (parseInt(age) <= 0) {
+  alert("Invalid age. Please enter a valid age ");
 }
 
-const Gender = prompt( 'male or female'  );
+let SkipWelcome = confirm("Do you want to skip the welcoming message?");
 
-
-// //switch(Gender){
-//     case 'male':
-        
-//         console.log("male");
-//         break;
-//     case 'Male':
-//         console.log("Male");
-//         break;
-//     case 'female':
-//         console.log("female");
-//         break;
-//      case 'Female':
-//             console.log("Female");
-//             break;    
-//     default:
-//         console.log('invalid');
-// }
-const age = prompt('Enter Your age please  ');
-
-if(age > 0)  {
-    console.log(age);
+if (!SkipWelcome) {
+  let title = "";
+  if (gender.toLowerCase() === "male") {
+    title = "Mr";
+  } else if (gender.toLowerCase() === "female") {
+    title = "Ms";
+  }
+  if (title === "") {
+    alert("Welcome, " + Name + "!");
+  } else {
+    alert("Welcome, " + title + " " + Name + "!");
+  }
 }
-else   { 
-    alert("the age is wrong")
-    console.log('invalid');
+let answers = [];
 
+function askQuestion(question) {
+  let answer = prompt(question);
+  if (answer.trim() === "") {
+    answer = "invalid";
+  }
+  answers.push(answer);
 }
 
-let user = confirm('You want to skip the welcoming message ?  ');
+askQuestion("Question 1: Do you like ice cream? (YES/NO)");
+askQuestion("Question 2: Is Our Restaurant your favorite Restaurants? (YES/NO)");
+askQuestion("Question 3: Have you been to Georgia? (YES/NO)");
 
-
-if (user == false && Gender == "male" )   {
-    
-        alert ("Hello MS  "    + Name)
-}
-    else if (user == false && Gender == "female"){
-        
-        alert ("Hello MR  "   + Name)
-        console.log("Welcome ");
-    }
-    
- if (user == true)  {
-   
-
-    console.log('No welcome');
-
-}
-
-
-
-
-var answer1 = prompt("Question 1: Do you like ice cream? (YES/NO)");
-var answer2 = prompt("Question 2: Is Our Restaurant your favorite Restaurants? (YES/NO)");
-var answer3 = prompt("Question 3: Have you been to Georgia? (YES/NO)");
-
-
-var validOptions = ["YES", "NO"];
-var isValid = true;
-
-if (!validOptions.includes(answer1)) {
-   
-  isValid = false;
-  
-}
-console.log(answer1);
-if (!validOptions.includes(answer2)) {
-    
-  isValid = false;
-  
-}
-console.log(answer2);
-if (!validOptions.includes(answer3)) {
-    
-  isValid = false;
-  
-}
-console.log(answer3);
-
-if (!isValid) {
-  alert("Invalid input detected. Please provide answers as 'YES' or 'NO'.");
-}
+console.log("User answers:", answers);
